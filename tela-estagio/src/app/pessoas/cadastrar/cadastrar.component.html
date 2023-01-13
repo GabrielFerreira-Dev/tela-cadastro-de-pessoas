@@ -1,0 +1,100 @@
+<div class="flexTop" style="overflow: hidden; justify-content: space-between;">
+    <div style="display: flex; width: 39%;">
+        <button mat-button class="example-button-row" (click)="criarNovo()">
+            <span>Novo Cadastro</span>
+        </button>
+        <span style="flex:auto;"></span>
+        <button mat-button class="example-button-row" (click)="buscarPorCpf()">
+            <span>Buscar por CPF</span>
+        </button>
+    </div>
+    <span style="flex:auto;"></span>
+    <div class="flexTop" style="overflow: hidden; padding-right: 15px;">
+        <ng-container *ngIf="pessoa">            
+            <button mat-button class="example-button-row" (click)="salvar()" value="Salvar">
+                <span>Salvar</span>
+            </button>
+        </ng-container>
+    </div>
+</div>
+<div class="flexBottom">
+    <div class="flexSides" style="width: 40%; overflow: auto; background-color: whitesmoke;">
+        <mat-action-list>
+            <button mat-list-item
+                style="height: 90px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;font-size: x-large;"
+                *ngFor="let _pessoa of pessoas" (click)="pessoa=_pessoa" (click)="botaoSalvar()">
+                {{ _pessoa.nome }}
+                <p style="font-size: small; font-style: italic;">
+                    {{ _pessoa.getIdade() }}
+                </p>
+            </button>
+            <mat-label></mat-label>
+        </mat-action-list>
+    </div>
+    <div class="flexSides" style="width: 60%; padding-left: 20px; padding-top: 20px; overflow: auto; margin: 0%;">
+        <form *ngIf="pessoa" [formGroup]="form">
+            <mat-form-field appearance="fill">
+                <mat-label>Nome Completo</mat-label>
+                <input matInput type="text" formControlName="nome">
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>CPF</mat-label>
+                <input matInput type="number" maxlength="11" [readonly]="pessoaExistente" required
+                    formControlName="cpf">
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Data de nascimento</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="dataNascimento">
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </form>
+        <form [formGroup]="formEndereco" *ngIf="pessoa">
+            <mat-form-field appearance="fill">
+                <mat-label>Logradouro</mat-label>
+                <input matInput type="text" formControlName="logradouro">
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Número</mat-label>
+                <input matInput type="text" formControlName="numero">
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Município</mat-label>
+                <input matInput type="text" formControlName="municipio">
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>UF</mat-label>
+                <input matInput type="text" formControlName="uf">
+            </mat-form-field>
+        </form>
+        <form *ngIf="pessoa" [formGroup]="form">
+            <ng-container *ngIf="!isProfessor">
+                <mat-form-field appearance="fill">
+                    <mat-label>Matricula</mat-label>
+                    <input matInput type="text" formControlName="numeroMatricula">
+                </mat-form-field>
+            </ng-container>
+            <ng-container *ngIf="isProfessor">
+                <mat-form-field appearance="fill">
+                    <mat-label>Especialidade</mat-label>
+                    <input matInput type="text" formControlName="especialidade">
+                </mat-form-field>
+                <mat-form-field class="example-chip-list" appearance="fill">
+                    <mat-label>Conhecimentos</mat-label>
+                    <mat-chip-grid #chipGrid aria-label="Digite os conhecimentos">
+                        <mat-chip-row *ngFor="let con of professor?.conhecimentos" (removed)="remove(con)"
+                            [editable]="true" (edited)="edit(con, $event)">
+                            {{ con }}
+                            <button matChipRemove [attr.aria-label]="'remove ' + con">
+                                <mat-icon>cancel</mat-icon>
+                            </button>
+                        </mat-chip-row>
+                        <input placeholder="Novo conhecimento..." [matChipInputFor]="chipGrid"
+                            [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
+                            (matChipInputTokenEnd)="add($event)" />
+                    </mat-chip-grid>
+                </mat-form-field>
+            </ng-container>
+        </form>
+    </div>
+</div>

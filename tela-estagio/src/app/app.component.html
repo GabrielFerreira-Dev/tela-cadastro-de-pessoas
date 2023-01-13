@@ -1,0 +1,16 @@
+<mat-drawer-container class="example-container">
+  <mat-drawer mode="side" opened>
+    <div class="flex">
+      <p class="circulo"></p>
+      <button mat-button class="example-button-row" routerLink="/cadastrarPessoa" routerLinkActive="ativo">
+        <span>Cadastro Pessoas</span>
+      </button>
+      <button mat-button class="example-button-row" routerLink ="/tarefas" routerLinkActive="ativo">
+        <span>Tarefas</span>
+      </button>
+    </div>
+  </mat-drawer>
+  <mat-drawer-content>
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>

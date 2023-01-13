@@ -1,0 +1,65 @@
+  .example-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;   
+    overflow: hidden;
+  }
+
+  .flex {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    padding-top: 60px;
+    gap: 15px;
+    height: 100%;
+    flex-wrap: wrap;
+    justify-content: initial;
+    align-items: center;
+  
+  }
+
+  
+  .mat-drawer {
+    display: block;
+    width: 280px;
+    justify-content: center;
+    background-color: #e0e0e0;
+  }
+  
+  .circulo {
+    padding: 85px;
+    background: #aeaeae;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+}
+
+  .example-button-row {
+    display: table-cell;
+    max-width: 600px;
+    width: 250px;
+    height: 55px;
+    border-style: solid;
+    border-color: #7008f7;
+    border-radius: 8px;
+  }
+
+  .example-button-row span {
+    color: #7008f7;
+  }
+  
+  .ativo {
+    background: #7008f7;
+    
+  }
+  .ativo span {
+    color: white !important;
+  }
+
+  mat-drawer-content {
+    overflow: auto;
+  }
+
+  

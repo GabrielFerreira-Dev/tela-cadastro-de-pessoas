@@ -1,0 +1,55 @@
+.example-button-row {
+    display: table-cell;
+    background: #7008f7;
+    max-width: 600px;
+    width: 150px;
+    height: 40px;
+    color: white;
+    border: white;
+    border-radius: 8px;
+  }
+
+  .flexTop {
+    display: flex;
+    flex-direction: row;
+    height: 60px;
+    flex-wrap: wrap;
+    gap: 100px;
+    padding-left: 5px;
+    align-items: center;
+    background:#efefef;
+    align-content: center;
+  }
+
+
+  .flexBottom {
+    display: flex;
+    flex-direction: row;
+    height: auto;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    background:darkgrey;
+    align-content: start;
+  }
+
+  .flexSides {
+    display: flex;
+    flex-direction: column;
+    background-color: #e0e0e0;
+    height: 597px;   
+    justify-content: initial;
+  }
+  
+form{
+    display: flex;
+    flex-direction: column;
+}
+mat-form-field{
+    flex: 20px;
+    width: 390px;  
+}
+
+.example-chip-list {
+  width: 390px;
+}
